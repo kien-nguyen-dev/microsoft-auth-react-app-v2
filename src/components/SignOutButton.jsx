@@ -5,7 +5,8 @@ export const SignOutButton = () => {
     const { instance } = useMsal();
 
     const handleSignOut = () => {
-        instance.logoutRedirect();
+        instance.logout();
+        window.location.href = "/"
     };
 
     return (

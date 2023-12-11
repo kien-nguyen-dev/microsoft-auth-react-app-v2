@@ -11,22 +11,35 @@ import { Link as RouterLink } from "react-router-dom";
 import { useIsAuthenticated } from "@azure/msal-react";
 
 const NavBar = () => {
-    const isAuthenticated = useIsAuthenticated();
+  const isAuthenticated = useIsAuthenticated();
 
-    return (
-        <div sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
-                <Toolbar>
-                    <Typography sx={{ flexGrow: 1 }}>
-                        <Link component={RouterLink} to="/" color="inherit" variant="h6">Microsoft identity platform</Link>
-                    </Typography>
-                    {isAuthenticated ? <WelcomeName /> : null}
-                    <Button component={RouterLink} to="/profile" color="inherit">Profile</Button>
-                    { isAuthenticated ? <SignOutButton /> : <SignInButton /> }
-                </Toolbar>
-            </AppBar>
-        </div>
-    );
+  return (
+    <div sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography sx={{ flexGrow: 1 }}>
+            <Link component={RouterLink} to="/" color="inherit" variant="h6">
+              Microsoft identity platform
+            </Link>
+          </Typography>
+          {isAuthenticated ? <WelcomeName /> : null}
+
+          {isAuthenticated ? (
+            <>
+              {" "}
+              <Button component={RouterLink} to="/profile" color="inherit">
+                {" "}
+                Profile{" "}
+              </Button>
+              <SignOutButton />{" "}
+            </>
+          ) : (
+            <SignInButton />
+          )}
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
 };
 
 export default NavBar;

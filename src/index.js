@@ -16,7 +16,7 @@ const pca = new PublicClientApplication({
     authority:
       "https://login.microsoftonline.com/common",
     redirectUri: "/",
-    postLogoutRedirectUri: "/",
+    // postLogoutRedirectUri: "/",
     navigateToLoginRequestUrl: false,
   },
   cache: {
